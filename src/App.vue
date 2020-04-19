@@ -1,28 +1,39 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+
+    <ion-app id="app">
+         <ion-header>
+            <ion-toolbar>
+                <ion-title><span style="color:orange;">CO</span><span style="color:#4267B2">VID</span>-19 Updates</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        
+            <!-- <ion-vue-router/> -->
+            <tabComponent/>
+     
+    </ion-app>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import tabComponent from "@/components/bottomtabs"
+import { Plugins } from '@capacitor/core'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    tabComponent,
+  },
+  mounted(){
+      this.$router.replace("/Globe")
+      var app = this
+      Plugins.App.addListener('backButton', function() { 
+        
+                if(app.$route.path == "/Globe"){
+                   if(confirm("Exit Application?"))
+                       Plugins.App.exitApp()  
+                }
+                this.$router.go(-1)       
+                           
+      });
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
