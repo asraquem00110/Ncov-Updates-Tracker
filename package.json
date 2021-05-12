@@ -15,7 +15,7 @@
     "@ionic/pwa-elements": "^1.5.2",
     "@ionic/vue": "0.0.4",
     "axios": "^0.19.2",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "core-js": "^3.6.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
